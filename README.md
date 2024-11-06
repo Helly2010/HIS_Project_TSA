@@ -1,7 +1,7 @@
 Package (A - Z)              Version
 ------------------------- --------------
 
-ipykernel                 6.29.5
+ipykernel                 6.29.5 <br>
 ipython                   8.29.0
 ipywidgets                8.1.5
 jupyter                   1.1.1

@@ -1,3 +1,39 @@
-# HIS-Wagner-Group2
+Package (A - Z)              Version
+------------------------- --------------
 
-Time Series Analysis
+ipykernel                 6.29.5
+ipython                   8.29.0
+ipywidgets                8.1.5
+jupyter                   1.1.1
+jupyter_client            8.6.3
+jupyter-console           6.6.3
+jupyter_core              5.7.2
+jupyter-events            0.10.0
+jupyter-lsp               2.2.5
+jupyter_server            2.14.2
+jupyter_server_terminals  0.5.3
+jupyterlab                4.2.5
+jupyterlab_pygments       0.3.0
+jupyterlab_server         2.27.3
+jupyterlab_widgets        3.0.13
+numpy                     2.1.2
+pandas                    2.2.3
+pip                       24.3.1
+plotly                    5.24.1
+pmdarima                  2.0.4
+pyparsing                 3.2.0
+pyproject_hooks           1.2.0
+python-dateutil           2.9.0.post0
+python-json-logger        2.0.7
+rpds-py                   0.20.0
+scikit-learn              1.5.2
+scipy                     1.14.1
+seaborn                   0.13.2
+statsmodels               0.14.4
+sympy                     1.13.1
+torch                     2.5.0
+torchaudio                2.5.0
+torchvision               0.20.0
+tornado                   6.4.1
+tqdm                      4.66.6
+types-python-dateutil     2.9.0.20241003

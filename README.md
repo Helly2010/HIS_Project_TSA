@@ -1,6 +1,6 @@
 Package (A - Z)              Version
 ------------------------- --------------
-
+humanize                  4.11.0 <br>
 ipykernel                 6.29.5 <br>
 ipython                   8.29.0 <br>
 ipywidgets                8.1.5 <br>

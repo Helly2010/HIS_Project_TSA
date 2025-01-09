@@ -95,7 +95,7 @@ parser.add_argument('--lr', type=float, default=1e-3, help='learning rate')
 parser.add_argument('--model_id', type=int, default=1, help='id of the saved model')
 parser.add_argument('--model_type', type=str, default='based_model', help='for multivariate model or univariate model')
 # training
-parser.add_argument('--is_train', type=int, default=14, help='training the model')
+parser.add_argument('--is_train', type=int, default=0, help='training the model')
 #change default to 0 for testing models
 
 

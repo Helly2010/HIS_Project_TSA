@@ -67,7 +67,7 @@ parser.add_argument('--residual', type=int, default=1, help='Residual Connection
 
 parser.add_argument('--model_name2', type=str, default='xLSTMTime', help='model_name2')
 # IntegratedModel   model1 model2 dlinear
-parser.add_argument('--dset', type=str, default='ettm1', help='dataset name')
+parser.add_argument('--dset', type=str, default='illness', help='dataset name')
 parser.add_argument('--context_points', type=int, default=512, help='sequence length')
 parser.add_argument('--target_points', type=int, default=96, help='forecast horizon')
 parser.add_argument('--batch_size', type=int, default=64    , help='batch size')
@@ -89,14 +89,14 @@ parser.add_argument('--d_model', type=int, default=256, help='Transformer d_mode
 parser.add_argument('--dropout', type=float, default=0.2, help='Transformer dropout')
 parser.add_argument('--head_dropout', type=float, default=0, help='head dropout')
 # Optimization args
-parser.add_argument('--n_epochs', type=int, default=100, help='number of training epochs')
+parser.add_argument('--n_epochs', type=int, default=50, help='number of training epochs')
 parser.add_argument('--lr', type=float, default=1e-3, help='learning rate')
 # model id to keep track of the number of models saved
 parser.add_argument('--model_id', type=int, default=1, help='id of the saved model')
 parser.add_argument('--model_type', type=str, default='based_model', help='for multivariate model or univariate model')
 # training
-parser.add_argument('--is_train', type=int, default=1, help='training the model')
-
+parser.add_argument('--is_train', type=int, default=14, help='training the model')
+#change default to 0 for testing models
 
 
 #parser = argparse.ArgumentParser(description='Swin Transformer training and evaluation script', add_help=False)
@@ -218,8 +218,10 @@ def test_func():
     out  = learn.test(dls.test, weight_path=weight_path, scores=[mse,mae])         # out: a list of [pred, targ, score_values]
     return out
 
-
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+
 def plot_feature_actual_vs_predicted(actual, predicted, feature_idx):
     """
     Plot the actual vs predicted values for a specific feature for the first sequence.
@@ -255,7 +257,7 @@ def plot_feature_actual_vs_predicted(actual, predicted, feature_idx):
     plt.legend()
     plt.grid(True)
     plt.show()
-
+    #plt.savefig('myfilename.png')
 
 
 

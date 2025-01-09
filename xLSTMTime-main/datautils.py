@@ -19,7 +19,7 @@ def get_dls(params):
     if not hasattr(params,'use_time_features'): params.use_time_features = True
 
     if params.dset == 'ettm1':
-        root_path = '/home/musleh/Downloads/Autoformer-20240316T112457Z-001/Autoformer/'
+        root_path = 'all_six_datasets/ETT-small/'
         size = [params.context_points, 0, params.target_points]
         dls = DataLoaders(
                 datasetCls=Dataset_ETT_minute,
@@ -220,7 +220,7 @@ def get_dls(params):
                 )
 
     elif params.dset == 'illness':
-        root_path = '/home/musleh/Downloads/Autoformer-20240316T112457Z-001/Autoformer/illness'
+        root_path = 'all_six_datasets/illness/'
         size = [params.context_points, 0, params.target_points]
         dls = DataLoaders(
                 datasetCls=Dataset_Custom,

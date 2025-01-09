@@ -65,7 +65,7 @@ class sLSTMCellConfig:
         4  # this must divide the hidden size, is not yet supported by all versions in this directory
     )
     num_states: int = 4  # this is for the sLSTM, a standard LSTM  has 2
-    backend: Literal["vanilla", "cuda"] = "cuda"
+    backend: Literal["vanilla", "cuda"] = "vanilla"
     # the type of function a cell computes
     function: str = "slstm"
     bias_init: Literal["powerlaw_blockdependent", "small_init", "standard"] = (

@@ -69,9 +69,9 @@ parser.add_argument('--model_name2', type=str, default='xLSTMTime', help='model_
 # IntegratedModel   model1 model2 dlinear
 parser.add_argument('--dset', type=str, default='ettm1', help='dataset name')
 parser.add_argument('--context_points', type=int, default=512, help='sequence length') 
-#context_points is window of timeseries data which is fed to model
-#
-parser.add_argument('--target_points', type=int, default=96, help='forecast horizon')  #96 future points prediction
+#context_points is window of timeseries data which is fed to model data points window
+parser.add_argument('--target_points', type=int, default=96, help='forecast horizon')  
+#96 future points prediction
 parser.add_argument('--batch_size', type=int, default=64    , help='batch size')
 parser.add_argument('--num_workers', type=int, default=1, help='number of workers for DataLoader')
 parser.add_argument('--scaler', type=str, default='standard', help='scale the input data')

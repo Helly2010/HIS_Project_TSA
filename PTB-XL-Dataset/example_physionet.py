@@ -21,6 +21,11 @@ Y.scp_codes = Y.scp_codes.apply(lambda x: ast.literal_eval(x))
 # Load raw signal data
 X = load_raw_data(Y, sampling_rate, path)
 
+print(X)
+print(X.shape)
+data_reshaped = np.transpose(X, (1, 2, 0))
+print(data_reshaped)
+print(data_reshaped.shape)
 # Load scp_statements.csv for diagnostic aggregation
 agg_df = pd.read_csv(path+'scp_statements.csv', index_col=0)
 agg_df = agg_df[agg_df.diagnostic == 1]

@@ -1,7 +1,6 @@
 import os
 import numpy as np
 import pandas as pd
-import os
 import torch
 from torch.utils.data import Dataset, DataLoader
 from sklearn.preprocessing import StandardScaler
@@ -601,3 +600,88 @@ class Dataset_Pred(Dataset):
 
 def _torch(*dfs):
     return tuple(torch.from_numpy(x).float() for x in dfs)
+
+
+
+import wfdb
+from torch.utils.data import Dataset
+from sklearn.preprocessing import StandardScaler
+
+class Dataset_PTBXL(Dataset):
+    def __init__(self, root_path, split='train', size=None,
+                 features='S', data_path='ptbxl_database.csv',
+                 target='OT', scale=True, timeenc=0, freq='h',
+                 use_time_features=False, train_split=0.7, test_split=0.2):
+        
+        # Initialize parameters
+        self.root_path = root_path
+        self.split = split
+        self.scale = scale
+        self.timeenc = timeenc
+        self.freq = freq
+        self.use_time_features = use_time_features
+        
+        # Set sequence lengths
+        if size is None:
+            self.seq_len = 1000  # PTB-XL has 1000 time steps
+            self.label_len = 0   # No label length for classification
+            self.pred_len = 1    # Predict a single label
+        else:
+            self.seq_len, self.label_len, self.pred_len = size
+        
+        # Load and preprocess data
+        self.__read_data__()
+    
+    def __read_data__(self):
+        # Load metadata
+        df = pd.read_csv(os.path.join(self.root_path, 'ptbxl_database.csv'), index_col='ecg_id')
+        
+        # Load raw waveform data
+        data = self.load_raw_data(df, 100, self.root_path)
+        
+        # Split data
+        train_split = int(len(data) * 0.7)
+        val_split = int(len(data) * 0.8)
+        
+        if self.split == 'train':
+            self.data = data[:train_split]
+        elif self.split == 'val':
+            self.data = data[train_split:val_split]
+        else:  # test
+            self.data = data[val_split:]
+        
+        # Scale data if required
+        if self.scale:
+            self.scaler = StandardScaler()
+            self.data = self.scaler.fit_transform(self.data.reshape(-1, self.data.shape[-1])).reshape(self.data.shape)
+        
+        # Prepare labels (you need to define this based on your specific task)
+        self.labels = self.prepare_labels(df)
+    
+    def load_raw_data(self, df, sampling_rate, path):
+        if sampling_rate == 100:
+            data = [wfdb.rdsamp(path + f) for f in df.filename_lr]
+        else:
+            data = [wfdb.rdsamp(path + f) for f in df.filename_hr]
+        data = np.array([signal for signal, meta in data])
+        return data
+    
+    def prepare_labels(self, df):
+        # Implement your label preparation logic here
+        # This depends on your specific classification task
+        pass
+    
+    def __getitem__(self, index):
+        s_begin = index
+        s_end = s_begin + self.seq_len
+        
+        seq_x = self.data[s_begin:s_end]
+        seq_y = self.labels[index]
+        
+        return seq_x, seq_y
+    
+    def __len__(self):
+        return len(self.data) - self.seq_len + 1
+    
+    def inverse_transform(self, data):
+        return self.scaler.inverse_transform(data)

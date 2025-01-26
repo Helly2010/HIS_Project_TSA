@@ -53,7 +53,7 @@ assert torch.__version__ >= '1.8.0', "DDP-based MoE requires Pytorch >= 1.8.0"
 from dataclasses import dataclass
 
 import argparse
-
+os.chdir("/Users/hellyshah/Documents/Github Repos/HIS_Project_TSA/xLSTMTime-main/")
 parser = argparse.ArgumentParser()
 parser.add_argument('--n1',type=int,default=128,help='First Embedded representation')#256
 parser.add_argument('--n2',type=int,default=256,help='Second Embedded representation')
@@ -67,9 +67,11 @@ parser.add_argument('--residual', type=int, default=1, help='Residual Connection
 
 parser.add_argument('--model_name2', type=str, default='xLSTMTime', help='model_name2')
 # IntegratedModel   model1 model2 dlinear
-parser.add_argument('--dset', type=str, default='illness', help='dataset name')
-parser.add_argument('--context_points', type=int, default=512, help='sequence length')
-parser.add_argument('--target_points', type=int, default=96, help='forecast horizon')
+parser.add_argument('--dset', type=str, default='ettm1', help='dataset name')
+parser.add_argument('--context_points', type=int, default=512, help='sequence length') 
+#context_points is window of timeseries data which is fed to model
+#
+parser.add_argument('--target_points', type=int, default=96, help='forecast horizon')  #96 future points prediction
 parser.add_argument('--batch_size', type=int, default=64    , help='batch size')
 parser.add_argument('--num_workers', type=int, default=1, help='number of workers for DataLoader')
 parser.add_argument('--scaler', type=str, default='standard', help='scale the input data')
@@ -89,7 +91,7 @@ parser.add_argument('--d_model', type=int, default=256, help='Transformer d_mode
 parser.add_argument('--dropout', type=float, default=0.2, help='Transformer dropout')
 parser.add_argument('--head_dropout', type=float, default=0, help='head dropout')
 # Optimization args
-parser.add_argument('--n_epochs', type=int, default=50, help='number of training epochs')
+parser.add_argument('--n_epochs', type=int, default=3, help='number of training epochs')
 parser.add_argument('--lr', type=float, default=1e-3, help='learning rate')
 # model id to keep track of the number of models saved
 parser.add_argument('--model_id', type=int, default=1, help='id of the saved model')

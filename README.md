@@ -1,39 +1,60 @@
-Package (A - Z)              Version
-------------------------- --------------
-humanize                  4.11.0 <br>
-ipykernel                 6.29.5 <br>
-ipython                   8.29.0 <br>
-ipywidgets                8.1.5 <br>
-jupyter                   1.1.1 <br>
-jupyter_client            8.6.3 <br>
-jupyter-console           6.6.3 <br>
-jupyter_core              5.7.2 <br>
-jupyter-events            0.10.0 <br>
-jupyter-lsp               2.2.5 <br>
-jupyter_server            2.14.2 <br>
-jupyter_server_terminals  0.5.3 <br>
-jupyterlab                4.2.5 <br>
-jupyterlab_pygments       0.3.0 <br>
-jupyterlab_server         2.27.3 <br>
-jupyterlab_widgets        3.0.13 <br>
-numpy                     2.1.2 <br>
-pandas                    2.2.3 <br>
-pip                       24.3.1 <br>
-plotly                    5.24.1 <br>
-pmdarima                  2.0.4 <br>
-pyparsing                 3.2.0 <br>
-pyproject_hooks           1.2.0 <br>
-python-dateutil           2.9.0.post0 <br>
-python-json-logger        2.0.7 <br>
-rpds-py                   0.20.0 <br>
-scikit-learn              1.5.2 <br>
-scipy                     1.14.1 <br>
-seaborn                   0.13.2 <br>
-statsmodels               0.14.4 <br>
-sympy                     1.13.1 <br>
-torch                     2.5.0 <br>
-torchaudio                2.5.0 <br>
-torchvision               0.20.0 <br>
-tornado                   6.4.1 <br>
-tqdm                      4.66.6 <br>
-types-python-dateutil     2.9.0.20241003 <br>
+# London Energy Consumption Analysis Project
+
+## Overview
+
+This project investigates energy consumption patterns and their relationships with socio-demographic factors and weather indicators across European cities, particularly London, following the installation of Smart Energy Meters. The analysis spans a period of 30 months and employs exploratory data analysis (EDA), machine learning algorithms, and time series forecasting methods.
+
+## Objectives
+
+- Analyze energy consumption patterns in relation to socio-demographic and weather data.
+- Evaluate the impact of Smart Energy Meter installations on energy usage.
+- Develop predictive models for forecasting future energy consumption.
+
+## Tools and Technologies
+
+- **Programming Language**: Python
+- **Platform**: Jupyter Notebook
+- **Data Visualization**: Tableau
+- **Data Processing**: Pandas, NumPy
+- **Machine Learning Libraries**: 
+  - Keras (for neural networks)
+  - XGBoost (for gradient boosting)
+  - Scikit-learn (for various machine learning algorithms)
+  - Statsmodels (for statistical modeling)
+
+## Machine Learning Algorithms Used
+
+- **Recurrent Neural Networks (RNN) with LSTM**: For modeling sequences of energy consumption data.
+- **XGBoost**: For efficient and accurate gradient boosting.
+- **FBProphet**: For time series forecasting, especially with seasonal effects.
+- **SARIMAX**: For seasonal autoregressive integrated moving average modeling.
+- **Decision Trees**: For straightforward decision-making processes.
+- **Random Forests**: For robust classification and regression tasks.
+- **Gradient Boosting**: For predictive modeling through boosting techniques.
+- **Linear Regression**: For understanding relationships between variables.
+- **Support Vector Machines (SVM)**: For classification tasks.
+
+## Libraries
+
+The following Python libraries are utilized for data manipulation, analysis, and visualization:
+
+- **Pandas**: For data manipulation and analysis.
+- **NumPy**: For numerical operations.
+- **Keras**: For building and training neural networks.
+- **XGBoost**: For implementing gradient boosting algorithms.
+- **Scikit-learn**: For machine learning model development.
+- **Statsmodels**: For statistical modeling.
+- **Matplotlib & Seaborn**: For data visualization.
+
+## Dataset
+
+The dataset used for this analysis can be accessed at: [Smart Meters in London - Kaggle](https://www.kaggle.com/jeanmidev/smart-meters-in-london).
+
+## Installation Instructions
+
+To set up your environment, ensure you have the following dependencies installed:
+
+```bash
+pip install pandas numpy keras xgboost scikit-learn statsmodels matplotlib seaborn fbprophet
+
+
